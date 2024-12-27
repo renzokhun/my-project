@@ -40,6 +40,41 @@
     <input type="text" id="todo-input" placeholder="Enter a task..." />
     <button id="add-button">Add Task</button>
     <ul id="todo-list"></ul>
-    <script src="script.js"></script>
+    <script>
+        // JavaScript Code
+
+        // Selectors
+        const todoInput = document.querySelector("#todo-input");
+        const addButton = document.querySelector("#add-button");
+        const todoList = document.querySelector("#todo-list");
+
+        // Event Listener for Adding a Task
+        addButton.addEventListener("click", () => {
+            const taskText = todoInput.value.trim(); // Trim to remove extra spaces
+
+            if (taskText !== "") {
+                // Create a new list item
+                const todoItem = document.createElement("li");
+                todoItem.className = "todo-item";
+                todoItem.textContent = taskText;
+
+                // Add Remove Button
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "Remove";
+                removeButton.className = "remove-button";
+
+                // Add Event Listener for the Remove Button
+                removeButton.addEventListener("click", () => {
+                    todoItem.remove();
+                });
+
+                todoItem.appendChild(removeButton); // Attach remove button to the task
+                todoList.appendChild(todoItem);     // Add task to the list
+                todoInput.value = "";               // Clear input
+            } else {
+                alert("Please enter a task!");
+            }
+        });
+    </script>
 </body>
 </html>
