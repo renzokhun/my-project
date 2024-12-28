@@ -1,0 +1,31 @@
+// JavaScript for a Simple To-Do List
+
+// Selectors
+const todoInput = document.querySelector("#todo-input");
+const addButton = document.querySelector("#add-button");
+const todoList = document.querySelector("#todo-list");
+
+// Event Listener for Adding a Task
+addButton.addEventListener("click", () => {
+    const taskText = todoInput.value.trim();
+
+    if (taskText !== "") {
+        const todoItem = document.createElement("li");
+        todoItem.className = "todo-item";
+        todoItem.textContent = taskText;
+
+        // Add Remove Button
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.className = "remove-button";
+        removeButton.addEventListener("click", () => {
+            todoItem.remove();
+        });
+
+        todoItem.appendChild(removeButton);
+        todoList.appendChild(todoItem);
+        todoInput.value = "";
+    } else {
+        alert("Please enter a task!");
+    }
+});
