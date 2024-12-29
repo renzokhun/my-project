@@ -1,31 +1,96 @@
-// JavaScript for a Simple To-Do List
+/* General styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-// Selectors
-const todoInput = document.querySelector("#todo-input");
-const addButton = document.querySelector("#add-button");
-const todoList = document.querySelector("#todo-list");
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
 
-// Event Listener for Adding a Task
-addButton.addEventListener("click", () => {
-    const taskText = todoInput.value.trim();
+.todo-app {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
 
-    if (taskText !== "") {
-        const todoItem = document.createElement("li");
-        todoItem.className = "todo-item";
-        todoItem.textContent = taskText;
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-        // Add Remove Button
-        const removeButton = document.createElement("button");
-        removeButton.textContent = "Remove";
-        removeButton.className = "remove-button";
-        removeButton.addEventListener("click", () => {
-            todoItem.remove();
-        });
+input[type="text"] {
+  width: calc(100% - 60px);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
 
-        todoItem.appendChild(removeButton);
-        todoList.appendChild(todoItem);
-        todoInput.value = "";
-    } else {
-        alert("Please enter a task!");
-    }
-});
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+.filters {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.filter-btn {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background-color: #28a745;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  font-size: 18px;
+}
+
+li.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+button.delete {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
